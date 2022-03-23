@@ -1,0 +1,321 @@
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload{
+    width: 100%;
+}
+
+.text-secondary-d1 {
+    color: #728299!important;
+}
+.page-header {
+    margin: 0 0 1rem;
+    padding-bottom: 1rem;
+    padding-top: .5rem;
+    border-bottom: 1px dotted #e2e2e2;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.page-title {
+    padding: 0;
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 300;
+}
+.brc-default-l1 {
+    border-color: #dce9f0!important;
+}
+
+.ml-n1, .mx-n1 {
+    margin-left: -.25rem!important;
+}
+.mr-n1, .mx-n1 {
+    margin-right: -.25rem!important;
+}
+.mb-4, .my-4 {
+    margin-bottom: 1.5rem!important;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.text-grey-m2 {
+    color: #888a8d!important;
+}
+
+.text-success-m2 {
+    color: #86bd68!important;
+}
+
+.font-bolder, .text-600 {
+    font-weight: 600!important;
+}
+
+.text-110 {
+    font-size: 110%!important;
+}
+.text-blue {
+    color: #478fcc!important;
+}
+.pb-25, .py-25 {
+    padding-bottom: .75rem!important;
+}
+
+.pt-25, .py-25 {
+    padding-top: .75rem!important;
+}
+.bgc-default-tp1 {
+    background-color: rgba(121,169,197,.92)!important;
+}
+.bgc-default-l4, .bgc-h-default-l4:hover {
+    background-color: #f3f8fa!important;
+}
+.page-header .page-tools {
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+}
+
+.btn-light {
+    color: #757984;
+    background-color: #f5f6f9;
+    border-color: #dddfe4;
+}
+.w-2 {
+    width: 1rem;
+}
+
+.text-120 {
+    font-size: 120%!important;
+}
+.text-primary-m1 {
+    color: #4087d4!important;
+}
+
+.text-danger-m1 {
+    color: #dd4949!important;
+}
+.text-blue-m2 {
+    color: #68a3d5!important;
+}
+.text-150 {
+    font-size: 150%!important;
+}
+.text-60 {
+    font-size: 60%!important;
+}
+.text-grey-m1 {
+    color: #7b7d81!important;
+}
+.align-bottom {
+    vertical-align: bottom!important;
+}
+
+
+.card-body input[type="file"] {
+    background-color: #dee2e6;
+    padding: 8px;
+    /* color: white; */
+}
+
+.card-body .form-check {
+    background-color: #ececec;
+    padding: 33px;
+}
+
+.card.cardBoxes {
+    background-color: rgb(236 236 236 / 55%);
+}
+
+button.btn.btn-info {
+    width: 145px;
+}
+
+#pending {
+    background-color: #ffc107;
+    padding: 8px;
+    border-radius: 9px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#unapproved {
+    background-color: #ff4d4d;
+    padding: 8px;
+    border-radius: 9px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#approved {
+   background-color: #0ac55c;
+    padding: 8px;
+    border-radius: 9px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#approve{
+    background-color: #28a745;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+
+#waiting{
+    background-color: #6c757d;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+#dname{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+#savebtn{
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    box-shadow: none;
+}
+
+.form-group button:hover {
+    background-color: #001f3f;
+}
+
+/* Ribbon css */
+.box {
+    width: 500px;
+    height: 445px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    position: relative;
+  }
+  
+  .ribbon {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    overflow: hidden;
+    z-index: 999999;
+  }
+  
+  .ribbon::before,
+  .ribbon::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #313131;
+    z-index: -1;
+  }
+  
+  .ribbon::after {
+    bottom: 0;
+    right: 0;
+  }
+  
+  .ribbon span {
+    position: absolute;
+    width: 220px;
+    height: 40px;
+    background-color: #da4747;
+    /* background-color: #6c757d; */
+    transform: rotate(45deg);
+    top: 40px;
+    left: -22px;
+    text-align: center;
+    line-height: 40px; /* should be same as heigh */
+    font-family: verdana;
+    color: #fff;
+  }
+
+
+/* Box2 Ribbon CSS */
+/* Ribbon css */
+.box2 {
+    width: 500px;
+    height: 445px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    position: relative;
+  }
+  
+  .ribbon2 {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    overflow: hidden;
+    z-index: 999999;
+  }
+  
+  .ribbon2::before,
+  .ribbon2::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #313131;
+    z-index: -1;
+  }
+  
+  .ribbon2::after {
+    bottom: 0;
+    right: 0;
+  }
+  
+  .ribbon2 span {
+    position: absolute;
+    width: 220px;
+    height: 40px;
+    /* background-color: #da4747; */
+    background-color: #6c757d;
+    transform: rotate(45deg);
+    top: 40px;
+    left: -22px;
+    text-align: center;
+    line-height: 40px; /* should be same as heigh */
+    font-family: verdana;
+    color: #fff;
+  }

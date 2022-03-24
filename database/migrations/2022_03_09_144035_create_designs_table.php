@@ -18,7 +18,7 @@ class CreateDesignsTable extends Migration
             $table->integer('categoryid')->nullable();
             $table->integer('userid')->nullable();
             $table->string('design_name')->nullable();
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

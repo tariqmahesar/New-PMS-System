@@ -6,8 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Models\Design;
+use App\Models\User;
 use App\Models\Categorysections;
 use Session;
+use DB;
+use Storage;
+use Auth;
 
 class CategoryController extends Controller
 {
@@ -94,10 +98,29 @@ class CategoryController extends Controller
             $userid = $request->userid;
             $categoryid = $request->categoryid;
             $design_name = $request->design_name;
+            $comment = 'New design has been added from designer click to view the design';
     
             $category = Design::create( $request->all());
+            $designid = DB::getPdo()->lastInsertId();
 
-             return back()->with('success', 'Design created successfully');
+            //dd($designid);
+
+            if($category){
+
+                $getManagers = DB::select('select * from Users where user_type = "Manager" ');
+
+                foreach($getManagers as $key=>$value){
+                    $managerid = $value->id;
+                    $insert = DB::insert('insert into manager_notificatios (userid, designid,managerid,notificatoin_comment,read_status) 
+                                            values (?, ?,?,?,?)', [$userid, $designid,$managerid,$comment,1]);
+
+                }
+
+            }
+
+            // return back()->with('success', 'Design created successfully');
+             session::flash('success','Design created successfully');
+             return redirect('admin/design');
         
     }
 

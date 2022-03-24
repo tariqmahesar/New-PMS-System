@@ -106,21 +106,25 @@
      <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
+
+
           <?php
               $notificationCount = 0;
               $userId = Auth::id();
               $userType = Auth::user()->user_type;
-              
+          ?>
+
+
+        <?php if($userType == "Designer"){ ?>
+
+          <?php
               if($userType == "Designer"){
-
                   $notifications = DB::select('select * from notifications where userid = "'.$userId.'" AND read_status = 1 ');
-                 if(!empty($notifications)){
-                  
-                  $nid = $notifications[0]->id;
-                  $notificationCount = count($notifications);
-
-
-                  }
+                  if(!empty($notifications)){
+                    
+                    $nid = $notifications[0]->id;
+                    $notificationCount = count($notifications);
+                    }
                   
               }
           ?>
@@ -141,6 +145,42 @@
           </span>
         </a>
         <?php } ?>
+
+        <?php } ?>
+
+
+        <?php if($userType == "Manager"){ ?>
+
+<?php
+    
+        $notifications = DB::select('select * from manager_notificatios where managerid = "'.$userId.'" AND read_status = 1 ');
+        if(!empty($notifications)){
+          
+          $nid = $notifications[0]->id;
+          $notificationCount = count($notifications);
+          }
+        
+    
+?>
+<?php 
+
+if(!empty($notifications)){ ?>
+<a href="{{route('show.managernotifications',['id'=>$nid])}}">
+<span class="badge badge-danger navbar-badge" title="You have {{$notificationCount}} unread comment">
+  {{$notificationCount}}
+</span>
+</a>
+</a>
+
+<?php }else{ ?>
+<a href="#">
+<span class="badge badge-danger navbar-badge" title="You have 0 unread comment">
+ 0
+</span>
+</a>
+<?php } ?>
+
+<?php } ?>
 
         <!-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">15 Notifications</span>

@@ -68,6 +68,9 @@ Route::post('unapproved/designstatus', 'App\Http\Controllers\ApprovedDesignContr
 // Notification routes
 Route::get('show/notifications/{id}',['as'=>'show.notifications', 'uses'=>'App\Http\Controllers\NotificationController@index']);
 
+Route::get('show/managernotifications/{id}',['as'=>'show.managernotifications', 'uses'=>'App\Http\Controllers\NotificationController@managernotification']);
+
+
 
 // });
 

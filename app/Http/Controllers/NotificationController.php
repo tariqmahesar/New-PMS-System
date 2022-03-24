@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notification;
+use App\Models\manager_notificatio;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
@@ -26,6 +27,24 @@ class NotificationController extends Controller
 
 
         return view('admin.showNotification',compact('notificationData'));
+    }
+
+    public function managernotification($id){
+
+        $notifications = DB::select('select * from manager_notificatios where id = "'.$id.'" ');
+        //dd($notifications);
+        $managerid = $notifications[0]->managerid;
+
+        $updateApprovedDesignSection = manager_notificatio::where('id', '=', $id)->where('managerid',$managerid)->update([
+            'read_status' => 0
+        ]);
+
+        $notificationData = DB::select('select * from manager_notificatios where id = "'.$id.'"');
+        //dd($notificationData);
+
+
+        return view('admin.showManagerNotification',compact('notificationData'));
+
     }
 
     /**

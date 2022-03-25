@@ -25,7 +25,14 @@ class CategoryController extends Controller
     public function index(){
         //dd("hi");
          $category = Category::all();
-         return view('admin.showCategory',compact('category'));
+
+         $designsData = DB::select('SELECT d.id, d.design_name,d.status, c.section_count 
+                                    FROM `designs` d
+                                    INNER JOIN categories c
+                                    ON d.categoryid = c.id'
+                                );
+
+         return view('admin.showCategory',compact('category','designsData'));
     }
 
 
@@ -98,10 +105,12 @@ class CategoryController extends Controller
             $userid = $request->userid;
             $categoryid = $request->categoryid;
             $design_name = $request->design_name;
-            $comment = 'New design has been added from designer click to view the design';
+            
     
             $category = Design::create( $request->all());
             $designid = DB::getPdo()->lastInsertId();
+
+            $comment = 'New design has been added from designer click to view the design';
 
             //dd($designid);
 
@@ -118,9 +127,9 @@ class CategoryController extends Controller
 
             }
 
-            // return back()->with('success', 'Design created successfully');
-             session::flash('success','Design created successfully');
-             return redirect('admin/design');
+            return back()->with('success', 'Design created successfully');
+           //  session::flash('success','Design created successfully');
+            // return redirect('admin/design');
         
     }
 

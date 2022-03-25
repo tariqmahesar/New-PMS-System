@@ -85,6 +85,68 @@
               </div>
               <!-- /.card-body -->
             </div>
+
+
+            <div class="card">
+               <div class="card-header">
+                <h3 class="card-title"> Design Listing</h3>
+              </div> 
+              <!-- /.card-header -->
+            @php
+            
+            $userType = Auth::user()->user_type;
+
+            @endphp
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Design Name</th>
+                    <!-- <th>Sections</th> -->
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  @foreach($designsData as $design)
+                  <?php
+                  //dd($catSec);
+                  ?>
+                    <tr>
+                    
+                    <td>{{$design->design_name}}</td>
+
+                    <!-- <td><span id="approve"><i class="fa fa-check-square" aria-hidden="true"></i> Approved 0</span> 
+                    &nbsp; / &nbsp; <span id="waiting">Waiting  &nbsp;&nbsp;<i class="fa fa-hourglass-half" aria-hidden="true"></i></td> -->
+                    <!-- <td>{{$design->section_count}}</td> -->
+                    <td>
+                      
+                  <a href="{{route('design.edit',['id' => $design->id])}}" title="Edit Design"><i style="color: #c49f47;" class="fas fa-pen-square"></i></a>  &nbsp;| &nbsp;
+
+                  <a href="{{route('design.delete',['id' => $design->id])}}"><i style="color: #bd0a0a;" title="Delete Design" class="fa fa-trash" aria-hidden="true"></i></a>
+
+                @if($userType == 'Manager' || $userType == 'Admin')
+
+                &nbsp; |  &nbsp;<a href="{{route('design.view',['id' => $design->id])}}" title="View Design">
+                     <i style="color: #17a2b8;" class="fa fa-eye" aria-hidden="true"></i></a> 
+
+                @else
+
+                &nbsp; |  &nbsp;<a href="{{route('design.upload',['id' => $design->id])}}" title="View Design">
+                     <i style="color: #17a2b8;" class="fa fa-eye" aria-hidden="true"></i></a> 
+
+                @endif
+                 
+
+                    </td>
+                    </tr>
+                    @endforeach
+                  
+                  </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
                     
                   
                   
@@ -141,6 +203,8 @@
     <div class="row showingSections">
 
     </div>
+
+    
               <!-- /.card-header -->
               <!-- form start -->
               

@@ -59,6 +59,7 @@
                             <div class="col-md-6">
                             <select class="form-control form-control @error('user_type') is-invalid @enderror" id="exampleFormControlSelect1" name="user_type" required>
                                 <option>Select User Type</option>
+                                <option value="Admin">Admin</option>
                                 <option value="Manager">Manager</option>
                                 <option value="Designer">Designer</option>
                             </select>

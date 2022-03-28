@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Notification;
 use App\Models\manager_notificatio;
+use App\Models\User;
+use App\Models\Design;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
@@ -74,9 +76,27 @@ class NotificationController extends Controller
      * @param  \App\Models\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function show(Notification $notification)
+    public function show()
     {
-        //
+
+        $notifications = DB::select('SELECT mn.id,mn.designid,d.design_name,u.name,mn.notificatoin_comment 
+                                        FROM `manager_notificatios` mn
+                                        INNER JOIN users u
+                                        ON mn.managerid = u.id
+                                        INNER JOIN designs d
+                                        ON mn.designid = d.id');
+
+
+        $notifications2 = DB::select('SELECT n.notificatoin_comment,d.design_name,n.sectionid,u.name FROM `notifications` n
+INNER JOIN users u
+ON n.managerid = u.id
+INNER JOIN designs d
+ON n.designid = d.id');
+
+        //dd($notifications);
+
+        return view('admin.showNotificationLogs',compact('notifications','notifications2'));
+        
     }
 
     /**

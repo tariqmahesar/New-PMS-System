@@ -71,6 +71,9 @@
                   <p>Categories & Design listing</p>
                 </a>
               </li>
+
+              
+
              <!--  <li class="nav-item">
                 <a href="{{url('admin/product')}}" class="nav-link <?php if(Request::segment(2) == "product"){ ?> active <?php } ?>">
                   <i class="far fa-circle nav-icon"></i>
@@ -84,6 +87,34 @@
 
 
           <br>
+
+          <li class="nav-item <?php if(Request::segment(2) == "logs" ){ ?> menu-is-opening menu-open <?php } ?>">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-folder-open"></i>
+              <p>
+                Show Notification Logs
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{url('admin/logs')}}" class="nav-link <?php if(Request::segment(2) == "logs"){ ?> active <?php } ?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Notification Logs</p>
+                </a>
+              </li>
+
+              
+
+             <!--  <li class="nav-item">
+                <a href="{{url('admin/product')}}" class="nav-link <?php if(Request::segment(2) == "product"){ ?> active <?php } ?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Product list</p>
+                </a>
+              </li> -->
+              
+            </ul>
+          </li>
           <!-- <li class="nav-item <?php if(Request::segment(2) == "design" ){ ?> menu-is-opening menu-open <?php } ?>">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-folder-open"></i>

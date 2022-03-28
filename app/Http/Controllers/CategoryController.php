@@ -110,7 +110,7 @@ class CategoryController extends Controller
             $category = Design::create( $request->all());
             $designid = DB::getPdo()->lastInsertId();
 
-            $comment = 'New design has been added from designer click to view the design';
+            $comment = 'New design has been added from designer ';
 
             //dd($designid);
 

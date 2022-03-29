@@ -62,7 +62,7 @@ class ApprovedDesignController extends Controller
 
         $categorySectionData = DB::select('select * from Categorysections where designid = "'.$designid.'" ');
         $userid = $categorySectionData[0]->userid;
-        $comment = "Congratulations your design section has been approved by the manager, your this design section will finally be approved when all the managers approved it";
+        $comment = "Your design section has been approved by the manager, your this design section will finally be approved when all the managers approved it";
 
         $insert = DB::insert('insert into notifications (userid, designid,sectionid,managerid,notificatoin_comment,read_status) 
         values (?, ?,?,?,?,?)', [$userid, $designid, $sectionid,$managerid,$comment,1]);

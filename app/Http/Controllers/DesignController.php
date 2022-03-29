@@ -168,38 +168,42 @@ class DesignController extends Controller
 
     public function upload_design($id)
     {
-       
-        
 
+        if(isset($id) && $id>0){
+
+        $category = Category::all();
         $useridd = 0;
+        $userType = '';
         if(isset($_GET['userid'])){
             $useridd = $_GET['userid'];
+            $userType = Auth::user()->user_type;
 
         }else{
 
             $userType = Auth::user()->user_type;
             $userId = Auth::id();
             $useridd = $userId;
-
         }
+
+       // dd($userType);
         
         $designid = $id;
         $designsData = DB::select("SELECT d.design_name,d.id, c.section_count AS total_sections FROM `designs` d
                                     INNER JOIN categories c
                                     ON d.categoryid = c.id
                                     WHERE d.id = '".$designid."' ");
-        
 
         $categorySectionData = DB::select('select * from Categorysections where designid = "'.$designid.'" AND userid = "'.$useridd.'" ');
 
-        // if(empty($categorySectionData) && $userType == 'Manager'){
+        
+            return view('admin.showDesignSections',compact('designsData','categorySectionData','category'));
 
-        //     return back()->with('success','Sections are empty designers not added designs yet');
+        }else{
 
-        // }else{
+            $category = Category::all();
+            return view('admin.showDesignSections',compact('category'));
+        }
 
-            return view('admin.showDesignSections',compact('designsData','categorySectionData'));
-       // }
     }
 
     public function view_design($id){

@@ -88,6 +88,9 @@
 
           <br>
 
+          <?php $userType = Auth::user()->user_type; ?>
+
+          <?php if($userType == "Manager"){ ?>
           <li class="nav-item <?php if(Request::segment(2) == "logs" ){ ?> menu-is-opening menu-open <?php } ?>">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-folder-open"></i>
@@ -115,6 +118,8 @@
               
             </ul>
           </li>
+
+        <?php } ?>
           <!-- <li class="nav-item <?php if(Request::segment(2) == "design" ){ ?> menu-is-opening menu-open <?php } ?>">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-folder-open"></i>

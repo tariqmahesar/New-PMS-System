@@ -26,11 +26,15 @@ class CategoryController extends Controller
         //dd("hi");
          $category = Category::all();
 
-         $designsData = DB::select('SELECT d.id, d.design_name,d.status, c.section_count 
+         $designsData = DB::select('SELECT d.id,d.userid,u.name, d.design_name,d.status, c.section_count 
                                     FROM `designs` d
                                     INNER JOIN categories c
-                                    ON d.categoryid = c.id'
+                                    ON d.categoryid = c.id
+                                    INNER JOIN users u
+                                    ON u.id = d.userid'
                                 );
+
+        // dd($designsData);
 
          return view('admin.showCategory',compact('category','designsData'));
     }
@@ -127,9 +131,9 @@ class CategoryController extends Controller
 
             }
 
-            return back()->with('success', 'Design created successfully');
+           // return back()->with('success', 'Design created successfully');
            //  session::flash('success','Design created successfully');
-            // return redirect('admin/design');
+             return redirect('design/upload/'.$designid.'?userid='.$userid.' ')->with('success', 'Design created successfully');
         
     }
 

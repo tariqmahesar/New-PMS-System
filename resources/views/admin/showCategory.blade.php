@@ -20,7 +20,10 @@
             <?php $pageLink = 'admin/'.Request::segment(2).'/add-content'; ?>
             
              <div style="text-align: right;">
-             <button class="btn btn-dark btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Add Design</button>
+            <a href="{{url('design/upload/0')}}">
+              <button class="btn btn-dark btn-sm">Add Design</button>
+             <!-- <button class="btn btn-dark btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Add Design</button> -->
+            </a>
               <a href="{{url('admin/add-category')}}">
                 <button class="btn btn-dark btn-sm">Add <?=$pg?></button>
               </a>
@@ -102,7 +105,8 @@
                   <thead>
                   <tr>
                     <th>Design Name</th>
-                    <!-- <th>Sections</th> -->
+                    <th>Sections</th>
+                    <th>Designer Name</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -114,6 +118,9 @@
                     <tr>
                     
                     <td>{{$design->design_name}}</td>
+
+                    <td>{{$design->section_count}}</td>
+                    <td>{{$design->name}}</td>
 
                     <!-- <td><span id="approve"><i class="fa fa-check-square" aria-hidden="true"></i> Approved 0</span> 
                     &nbsp; / &nbsp; <span id="waiting">Waiting  &nbsp;&nbsp;<i class="fa fa-hourglass-half" aria-hidden="true"></i></td> -->

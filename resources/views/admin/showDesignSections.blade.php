@@ -159,8 +159,82 @@ label.btn.inverse.active {
              
             </ul>
 
-            
             <div class="tab-content" id="custom-content-below-tabContent">
+              <div class="tab-pane fade show active" id="custom-content-below-home" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
+                <div class="container">
+                  <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+
+            
+            <form id="quickForm" method="post" action="{{route('save.design')}}" enctype="multipart/form-data" >
+              @csrf
+            @php
+            $userId = Auth::id();
+            @endphp
+            <input type="hidden" name="userid" value="{{$userId}}">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add Design</h3>
+              </div>
+              <!-- <br> -->
+              <div class="form-group" style="padding:10px;">
+              <label>Choose Category</label><br>
+              <select class="custom-select" id="selectCategory" name="categoryid" style="width: 30%">
+                <option selected>Choose Category</option>
+              @foreach($category as $cat)
+                <option value="<?=$cat['id']?>"><?=$cat['category_name']?></option>
+              @endforeach
+              </select>   
+              </div>
+
+
+              <div class="form-group" style="padding:10px;">
+              <label>Design Name</label><br>
+              <input type="text" class="form-control" name="design_name" placeholder="Design Name" name="design_name" value="">
+              </div>
+
+
+              
+    <div class="row showingSections">
+
+    </div>
+
+    
+              <!-- /.card-header -->
+              <!-- form start -->
+              
+                <div class="card-body">
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Add Design</button>
+                </div>
+              
+
+            </div>
+            </form>
+          
+
+          </div>
+          
+        </div>         
+                </div>
+              </div>
+             
+            </div>
+
+            @php
+
+            $segment = Request::segment(3);
+
+            @endphp
+
+            <?php if(isset($segment) && $segment>0){ ?>
+
+              <div class="tab-content" id="custom-content-below-tabContent">
               <div class="tab-pane fade show active" id="custom-content-below-home" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
                 <div class="container">
         @php
@@ -259,7 +333,7 @@ label.btn.inverse.active {
 
 <div class="card-footer">
 
-@if($userType == "Manager")
+@if(isset($userType) && $userType == "Manager")
 <button type="button" did="{{$designid}}" sid="{{$sectionid}}" uid="{{$userId}}" udid = {{$designerid}} aps="1" class="one statusbtn">
   <i class="fa-solid fa-square-pen">
 </i>Change Design Status</button>
@@ -312,6 +386,7 @@ $j++;
               </div>
              
             </div>
+            <?php } ?>
             
           </div>
           <!-- /.card -->

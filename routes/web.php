@@ -56,6 +56,7 @@ Route::get('design/edit/{id}',['as'=>'design.edit', 'uses'=>'App\Http\Controller
 Route::post('design-update/{id}' , ['as' => 'design.update' , 'uses' => 'App\Http\Controllers\DesignController@update']);
 Route::post('section/update/{id}' , ['as' => 'section.update' , 'uses' => 'App\Http\Controllers\DesignController@sectionupdate']);
 Route::get('design/delete/{id}' , ['as' => 'design.delete' , 'uses' => 'App\Http\Controllers\DesignController@destroy']);
+Route::get('design/upload','App\Http\Controllers\DesignController@upload_design')->name('design.upload');
 Route::get('design/upload/{id}','App\Http\Controllers\DesignController@upload_design')->name('design.upload');
 Route::get('design/view/{id}','App\Http\Controllers\DesignController@view_design')->name('design.view');
 

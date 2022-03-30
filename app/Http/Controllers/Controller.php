@@ -10,4 +10,22 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    // protected $module_directory;
+    // protected $module_name;	
+
+    // public function __construct()
+    // {
+    //     $this->module_directory = '';
+    // }
+
+
+
+
+
+
+
+
+
+
 }

@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::group(['middleware' => ['auth','admin']], function(){
+Route::group(['middleware' => ['auth','admin']], function(){
     // Route::get('/admin', function(){
     //     return view('admin.dashboard');
     // });
@@ -73,7 +73,7 @@ Route::get('admin/logs','App\Http\Controllers\NotificationController@show');
 
 
 
-// });
+});
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

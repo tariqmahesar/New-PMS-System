@@ -85,40 +85,7 @@ $pg = ucfirst($page);
 <option value="5">Five</option>
 <option value="6">Six</option>
 </select>
-
-<!-- <select class="form-control" name="category_package_type" id="exampleFormControlSelect1" style="width: 25%;">
-<option>Select Package Type</option>
-<option <?php //if($category->category_package_type=='Type 1'){ ?> selected <?php //} ?> value="Type 1">Type 1</option>
-<option <?php //if($category->category_package_type=='Type 2'){ ?> selected <?php //} ?> value="Type 2">Type 2</option>
-<option <?php //if($category->category_package_type=='Type 3'){ ?> selected <?php //} ?> value="Type 3">Type 3</option>
-<option <?php //if($category->category_package_type=='Type 4'){ ?> selected <?php //} ?> value="Type 4">Type 4</option>
-<option <?php //if($category->category_package_type=='Type 5'){ ?> selected <?php //} ?> value="Type 5">Type 5</option>
-</select> -->
 </div>
-
-
-<!-- <div class="form-check">
-  <input class="form-check-input" name="section[]" type="checkbox" value="Sect 1" id="flexCheckDefault" />
-  <label class="form-check-label" for="flexCheckDefault">Sect 1</label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input class="form-check-input" name="section[]" type="checkbox" value="Sect 2" id="flexCheckChecked"/>
-  <label class="form-check-label" for="flexCheckChecked">Sect 2</label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input class="form-check-input" name="section[]" type="checkbox" value="Sect 3" id="flexCheckChecked"/>
-<label class="form-check-label" for="flexCheckChecked">Sect 3</label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input class="form-check-input" name="section[]" type="checkbox" value="Sect 4" id="flexCheckChecked"/>
-<label class="form-check-label" for="flexCheckChecked">Sect 4</label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input class="form-check-input" name="section[]" type="checkbox" value="Sect 5" id="flexCheckChecked"/>
-<label class="form-check-label" for="flexCheckChecked">Sect 5</label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input class="form-check-input" name="section[]" type="checkbox" value="Sect 6" id="flexCheckChecked"/>
-<label class="form-check-label" for="flexCheckChecked">Sect 6</label>
-</div> -->
-
-
-
                   
                 </div>
                 <!-- /.card-body -->
@@ -128,17 +95,9 @@ $pg = ucfirst($page);
                 </div>
               </form>
             </div>
-          
-
           </div>
-          
         </div>
-
-            
-            
           </div>
           <!-- /.card -->
         </div>
-
-
 @endsection

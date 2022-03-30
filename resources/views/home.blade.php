@@ -15,6 +15,8 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <h3>Go to Printing Portal <a href="{{url('admin')}}"><button class="btn btn-danger">Dashboard</button></a> </h3>
                 </div>
             </div>
         </div>

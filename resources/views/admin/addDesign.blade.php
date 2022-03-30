@@ -21,10 +21,7 @@ $pg = ucfirst($page);
               <i class="fas fa-edit"></i>
               {{$pg}} Add Details to {{$pg}} Page
             </h3>
-            <!-- <a href="{{url('admin/add-content')}}">
-             <div style="text-align: right;"><button class="btn btn-primary">Add Content</button></div>
-            </a> -->
-
+           
           </div>
 
           <div class="card-body">

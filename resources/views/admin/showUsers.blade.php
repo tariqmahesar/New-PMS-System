@@ -5,18 +5,7 @@ Admin | Edit Category
 @endsection
 
 @section('content')
-<style>
-    span.badge.badge-success {
-    padding: 12px;
-}
 
-#ddd{
-    text-align: center;
-    padding: 23px;
-    font-family: unset;
-    background-color: #dee2e6;
-}
-</style>
 <?php 
 $page = Request::segment(2);
 $pg = ucfirst($page);

@@ -5,15 +5,6 @@ Printout Management | Dashboard
 @endsection
 @section('content')
 
-<style>
-  #heading1{
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    font-family: unset;
-  }
-</style>
 <div class="container-fluid">
 
   <div class="row">

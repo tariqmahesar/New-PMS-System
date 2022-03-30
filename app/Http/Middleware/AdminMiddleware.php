@@ -17,7 +17,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if( \Auth::user()->user_type == 'Admin' )
+        if( \Auth::user()->user_type == 'Admin' || \Auth::user()->user_type == 'Manager' || \Auth::user()->user_type == 'Designer' )
         {
             return $next($request); 
         }else{

@@ -87,12 +87,7 @@ class DesignController extends Controller
          return back()->with('success', 'Your files has been successfully uploaded');
     }
 
-    public function store(Request $request)
-    {
-        
-    }
-
-   
+  
     public function edit($id)
     {
         $designid = $id;
@@ -168,9 +163,7 @@ class DesignController extends Controller
 
     public function upload_design($id)
     {
-
         if(isset($id) && $id>0){
-
         $category = Category::all();
         $useridd = 0;
         $userType = '';
@@ -219,10 +212,6 @@ class DesignController extends Controller
                                     ");
 
         return view('admin.showUsers',compact('usersAddedDesigns'));
-
-        // dd($getDesignUsers);
-
-        
     }
 
 

@@ -35,18 +35,11 @@ class ApprovedDesignController extends Controller
             $userid = $request->userid;
             $designerid = $request->designerid;
             $approved_status = $request->approved_status;
-
-
             $status = 'approved';
             $managerid = $userid;
-
             $addApprovedDesigns = Approved_design::create( $request->all());
-           
-
             if($addApprovedDesigns){
-                
                 $this->sendNotificationToDesigner($designid,$sectionid,$status,$managerid);
-
                 return response()->json( array(
                     'success' => true, 
                     'response'=>'Design status has been approved'));
@@ -59,7 +52,6 @@ class ApprovedDesignController extends Controller
     }
 
     public function sendNotificationToDesigner($designid,$sectionid,$status,$managerid){
-
         $categorySectionData = DB::select('select * from Categorysections where designid = "'.$designid.'" ');
         $userid = $categorySectionData[0]->userid;
         $comment = "Your design section has been approved by the manager, your this design section will finally be approved when all the managers approved it";
@@ -67,22 +59,6 @@ class ApprovedDesignController extends Controller
         $insert = DB::insert('insert into notifications (userid, designid,sectionid,managerid,notificatoin_comment,read_status) 
         values (?, ?,?,?,?,?)', [$userid, $designid, $sectionid,$managerid,$comment,1]);
 
-    }
-
-    public function store(Request $request)
-    {
-        
-    }
-
-    public function show(Approved_design $approved_design)
-    {
-        
-    }
-
-    
-    public function edit(Approved_design $approved_design)
-    {
-        
     }
 
     

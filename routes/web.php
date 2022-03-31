@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 const ADMIN_CONTROLLER = \App\Http\Controllers\admin\AdminController::class;
 const CATEGORY_CONTROLLER = \App\Http\Controllers\CategoryController::class;
 const DESIGN_CONTROLLER = \App\Http\Controllers\DesignController::class;
+const MESSAGES_CONTROLLER = \App\Http\Controllers\MessagesController::class;
 
 
 
@@ -73,6 +74,11 @@ Route::post('unapproved/designstatus', 'App\Http\Controllers\ApprovedDesignContr
 Route::get('show/notifications/{id}',['as'=>'show.notifications', 'uses'=>'App\Http\Controllers\NotificationController@index']);
 Route::get('show/managernotifications/{id}',['as'=>'show.managernotifications', 'uses'=>'App\Http\Controllers\NotificationController@managernotification']);
 Route::get('admin/logs','App\Http\Controllers\NotificationController@show');
+
+// Messages Routes
+Route::get('admin/inbox', [MESSAGES_CONTROLLER,'index'])->name('inbox');
+Route::get('admin/view-message', [MESSAGES_CONTROLLER,'show'])->name('view.message');
+Route::get('admin/compose-message', [MESSAGES_CONTROLLER,'composeMessage'])->name('compose.message');
 
 
 

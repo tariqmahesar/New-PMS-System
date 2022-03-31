@@ -120,29 +120,26 @@
           </li>
 
         <?php } ?>
-          <!-- <li class="nav-item <?php if(Request::segment(2) == "design" ){ ?> menu-is-opening menu-open <?php } ?>">
+
+
+          <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-folder-open"></i>
+              <i class="nav-icon far fa-envelope"></i>
               <p>
-                Manage Design
-                <i class="fas fa-angle-left right"></i>
+                Mailbox 
+               <i class="fas fa-angle-left right"></i>
+               <span class="badge badge-info right">2</span> 
               </p>
             </a>
-            <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{url('admin/design')}}" class="nav-link <?php if(Request::segment(2) == "design" || Request::segment(2) == "add-design"){ ?> active <?php } ?>">
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="{{url('admin/inbox')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Design Listings</p>
+                  <p>Inbox</p>
                 </a>
-              </li> -->
-
-
-             <!--  <li class="nav-item">
-                <a href="{{url('admin/product')}}" class="nav-link <?php if(Request::segment(2) == "product"){ ?> active <?php } ?>">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Product list</p>
-                </a>
-              </li> -->
+              </li>
+            </ul>
+          </li>
               
             </ul>
           </li>

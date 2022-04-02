@@ -62,6 +62,7 @@ class CategoryController extends Controller
             'category_name' => 'required|min:3',
             'section_count' => 'required|integer',
         ]);
+        
         $category = Category::create( $request->all());
         if($category){
             session::flash('success','Category has been successfully added');

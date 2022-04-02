@@ -121,6 +121,10 @@
 
         <?php } ?>
 
+<?php
+$userId = Auth::id();
+$totalUnreadMessages = DB::select("SELECT COUNT(*) AS totalmsg from messages where readstatus = 1 AND recieverid = '".$userId."' ");
+?>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -128,7 +132,7 @@
               <p>
                 Mailbox 
                <i class="fas fa-angle-left right"></i>
-               <span class="badge badge-info right">2</span> 
+               <span class="badge badge-info right">{{$totalUnreadMessages[0]->totalmsg}}</span> 
               </p>
             </a>
             <ul class="nav nav-treeview" style="display: none;">

@@ -5,34 +5,37 @@ namespace App\Http\Controllers;
 use App\Models\Messages;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Session;
 use DB;
 use Storage;
 use Auth;
+use DateTime;
+
 
 class MessagesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public $userUnreadMessages;
+
+
     public function index()
     {
+        $userId = Auth::id();
+        $messages = DB::select("SELECT  msg.id,msg.message,users.name,users.user_type,msg.readstatus,msg.status ,msg.created_at 
+                                FROM `messages` msg
+                                INNER JOIN users
+                                ON users.id = msg.senderid
+                                WHERE msg.status = 1 AND msg.recieverid = '".$userId."'
+                                ORDER BY msg.id DESC ");
 
+        $totalUnreadMessages = Messages::where('readstatus',1)->where('recieverid',$userId)->get();
 
-        return view('admin.inbox');
+        return view('admin.inbox',compact('messages','totalUnreadMessages'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     
-
     public function composeMessage()
     {
-
         $userType = Auth::user()->user_type;
         $userId = Auth::id();
         //dd($userId);
@@ -55,65 +58,128 @@ class MessagesController extends Controller
         return view('admin.composeForm',compact('usersData'));
     }
 
-    public function create()
-    {
-        
-    }
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $Messages = Messages::create( $request->all());
+        if($Messages){
+            return back()->with('success', 'Message sent successfully');
+        }
+    
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Messages  $messages
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Messages $messages)
-    {
-        return view('admin.viewMessage');
+    public function insertreply(Request $request){
+
+        $Messages = Messages::create( $request->all());
+        if($Messages){
+            return back()->with('success', 'Reply sent successfully');
+        }
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Messages  $messages
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Messages $messages)
+   
+    public function show($id)
     {
-        //
+        //dd($id);
+        $messagesData['messageInfo'] = Messages::where('id',$id)->get();
+        $readStatus = $messagesData['messageInfo'][0]->readstatus;
+        if($readStatus == 1){
+            $updateDesigns = Messages::where('id', '=', $id)->update([
+                    'readstatus' => 0
+                ]);
+        }
+        
+        $senderId = $messagesData['messageInfo'][0]->senderid;
+        $messagesData['senderInfo'] = User::where('id',$senderId)->get();
+        //dd($messagesData['messageInfo'][0]['message']);
+        return view('admin.viewMessage',compact('messagesData'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Messages  $messages
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Messages $messages)
+  
+    public function replyMessage($recieverId)
     {
-        //
+        $senderId = Auth::id();
+
+        $userData['recieverInfo'] = User::where('id',$recieverId)->get();
+        $userData['senderInfo'] = User::where('id',$senderId)->get();
+
+        //dd($messagesData);
+
+        return view('admin.replyForm',compact('userData'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Messages  $messages
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Messages $messages)
-    {
-        //
+    public function destroy($id){
+        $message = Messages::find($id);
+        $message->delete();
+       session::flash('success','Record has been deleted Successfully');
+       return redirect('admin/inbox');
     }
+
+
+    public static function timeAgo($time_ago){
+
+    $cur_time   = time();
+    $time_elapsed   = $cur_time - $time_ago;
+    $seconds    = $time_elapsed ;
+    $minutes    = round($time_elapsed / 60 );
+    $hours      = round($time_elapsed / 3600);
+    $days       = round($time_elapsed / 86400 );
+    $weeks      = round($time_elapsed / 604800);
+    $months     = round($time_elapsed / 2600640 );
+    $years      = round($time_elapsed / 31207680 );
+    // Seconds
+    if($seconds <= 60){
+        echo "$seconds seconds ago";
+    }
+
+    //Minutes
+    else if($minutes <=60){
+        if($minutes==1){
+            echo "one minute ago";
+        }
+        else{
+            echo "$minutes minutes ago";
+        }
+    }
+    //Hours
+    else if($hours <=24){
+        if($hours==1){
+            echo "an hour ago";
+        }else{
+            echo "$hours hours ago";
+        }
+    }
+    //Days
+    else if($days <= 7){
+        if($days==1){
+            echo "yesterday";
+        }else{
+            echo "$days days ago";
+        }
+    }
+    //Weeks
+    else if($weeks <= 4.3){
+        if($weeks==1){
+            echo "a week ago";
+        }else{
+            echo "$weeks weeks ago";
+        }
+    }
+    //Months
+    else if($months <=12){
+        if($months==1){
+            echo "a month ago";
+        }else{
+            echo "$months months ago";
+        }
+    }
+    //Years
+    else{
+        if($years==1){
+            echo "one year ago";
+        }else{
+            echo "$years years ago";
+        }
+}
+
+}
 }

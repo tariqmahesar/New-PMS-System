@@ -39,7 +39,7 @@ $pg = ucfirst($page);
   @endif
 
    <section class="content">
-    <form action="{{route('store.message')}}" method="post">
+    <form action="{{route('storereply.message')}}" method="post">
       @csrf
       <div class="container-fluid">
         <div class="row">
@@ -48,18 +48,13 @@ $pg = ucfirst($page);
           <div class="col-md-12">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h3 class="card-title">Compose New Message</h3>
+                <h3 class="card-title">Reply Message to {{$userData['recieverInfo'][0]->name}}</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <div class="form-group">
-                  <input type="hidden" name="senderid" value="{{$usersData['senderid']}}">
-                        <select class="form-control mngdsnr" name="recieverid" required="">
-                          <option>Please Select {{-- $usersData['userType'] --}}</option>
-                          @foreach($usersData['users'] as $key=>$user)
-                          <option value="{{$user->id}}">{{$user->name}}</option>
-                          @endforeach
-                        </select>
+                  <input type="hidden" name="senderid" value="{{$userData['senderInfo'][0]->id}}">
+                  <input type="hidden" name="recieverid" value="{{$userData['recieverInfo'][0]->id}}">
                       </div>
                 <div class="form-group">
                   <textarea class="form-control" name="message" rows="3" required="" placeholder="Enter ..."></textarea>

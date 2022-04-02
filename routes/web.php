@@ -65,7 +65,6 @@ Route::get('design/upload/{id}',[DESIGN_CONTROLLER,'upload_design'])->name('desi
 Route::get('design/view/{id}',[DESIGN_CONTROLLER,'view_design'])->name('design.view');
 
 
-
 // Approved Design Routes
 Route::post('update/designstatus', 'App\Http\Controllers\ApprovedDesignController@create')->name('update.designstatus');
 Route::post('unapproved/designstatus', 'App\Http\Controllers\ApprovedDesignController@update')->name('unapproved.designstatus');
@@ -77,8 +76,12 @@ Route::get('admin/logs','App\Http\Controllers\NotificationController@show');
 
 // Messages Routes
 Route::get('admin/inbox', [MESSAGES_CONTROLLER,'index'])->name('inbox');
-Route::get('admin/view-message', [MESSAGES_CONTROLLER,'show'])->name('view.message');
+Route::get('admin/view-message/{id}', [MESSAGES_CONTROLLER,'show'])->name('view.message');
 Route::get('admin/compose-message', [MESSAGES_CONTROLLER,'composeMessage'])->name('compose.message');
+Route::get('admin/compose-message/{id}', [MESSAGES_CONTROLLER,'replyMessage']);
+Route::post("store-message",[MESSAGES_CONTROLLER,'store'])->name('store.message');
+Route::post("storereply-message",[MESSAGES_CONTROLLER,'insertreply'])->name('storereply.message');
+Route::get('message/delete/{id}' , [MESSAGES_CONTROLLER,'destroy'])->name('message.delete');
 
 
 

@@ -16,17 +16,27 @@ $pg = ucfirst($page);
 <a href="{{url('admin/compose-message')}}">
   <button type="button" class="btn btn-primary">Compose</button>
 </a>
+<br><br>
+
   <br><br>
     
     <!-- Main content -->
     <section class="content">
       <div class="row">
+
+         @if($message = Session::get('success'))
+              <div class="alert alert-success alert-block">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                      <strong>{{ $message }}</strong>
+              </div>
+            @endif
         
         <!-- /.col -->
         <div class="col-md-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title">Messages</h3>
+              <span id="ttmsg"><?=count($totalUnreadMessages)?> unread messages</span>
 
 
 
@@ -80,24 +90,33 @@ $pg = ucfirst($page);
               <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped">
                   <tbody>
-                  <tr>
-                    
-            
+                @foreach($messages as $msg)
+                @php
+
+                $curenttime=$msg->created_at;
+                $time_ago = strtotime($curenttime);
+                
+                $msgId = $msg->id;
+                @endphp
+                  <tr <?php if($msg->readstatus==1){ ?> style="background-color: antiquewhite;" <?php } ?>>
                     <td class="mailbox-name">
-                      <a href="{{url('admin/view-message')}}">Alexander Pierce</a></td>
-                    <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
+                      <a href="{{url('admin/view-message/'.$msgId)}}">{{$msg->name}}</a></td>
+                    <td class="mailbox-subject"><b>{{Str::limit($msg->message, 20)}}</b>
                     </td>
-                    <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">5 mins ago</td>
+                    <td class="mailbox-attachment">{{$msg->user_type}}</td>
+                    <td class="mailbox-date">{{App\Http\Controllers\MessagesController::timeAgo($time_ago);}}</td>
                     <td>
                         <div class="btn-group">
+                      <a href="{{route('message.delete' , ['id' => $msg->id])}}">
                         <button type="button" class="btn btn-default btn-sm">
                           <i class="far fa-trash-alt"></i>
                         </button>
+                      </a>
                         
                       </div>
                   </td>
                   </tr>
+                @endforeach
                   
                   
                   

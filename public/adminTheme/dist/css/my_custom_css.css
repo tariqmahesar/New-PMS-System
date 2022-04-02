@@ -414,3 +414,12 @@ label.btn.inverse.active {
 .mngdsnr{
     width: 292px;
 }
+
+#ttmsg{
+    background-color: #9f0000;
+    color: white;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 8px;
+    float: right;
+}

@@ -33,15 +33,9 @@ $pg = ucfirst($page);
             <!-- /.card-header -->
             <div class="card-body p-0">
               <div class="mailbox-read-message">
-                <p>Hello John,</p>
+                <p>Sender: {{$messagesData['senderInfo'][0]['name']}}</p>
 
-                <p>Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwave put a bird
-                  on it aesthetic, bitters brunch meggings vegan iPhone. Dreamcatcher vegan scenester mlkshk. Ethical
-                  master cleanse Bushwick, occupy Thundercats banjo cliche ennui farm-to-table mlkshk fanny pack
-                  gluten-free. Marfa butcher vegan quinoa, bicycle rights disrupt tofu scenester chillwave 3 wolf moon
-                  asymmetrical taxidermy pour-over. Quinoa tote bag fashion axe, Godard disrupt migas church-key tofu
-                  blog locavore. Thundercats cronut polaroid Neutra tousled, meh food truck selfies narwhal American
-                  Apparel.</p>
+                <p>{{$messagesData['messageInfo'][0]['message']}}</p>
 
               </div>
               <!-- /.mailbox-read-message -->
@@ -51,7 +45,14 @@ $pg = ucfirst($page);
             <!-- /.card-footer -->
             <div class="card-footer">
               <div class="float-left">
+              <a href="{{url('admin/compose-message/'.$messagesData['senderInfo'][0]['id'])}}">
                 <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
+              </a>
+              <a href="{{url('admin/inbox')}}">
+                <button type="button" class="btn btn-info">
+                  <i class="fas fa-reply"></i> Go to inbox
+                </button>
+              </a>
                 
               </div>
               

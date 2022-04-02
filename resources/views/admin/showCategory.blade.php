@@ -75,8 +75,8 @@
                     <td>{{$cat->section_count}}</td>
                     <td>
                       
-                        <a href="{{route('category.edit',['id' => $cat->id])}}"><i style="color: #c49f47;" class="fas fa-pen-square"></i></a> |
-                        <a href="{{route('category.delete' , ['id' => $cat->id])}}"><i style="color: #bd0a0a;" class="fa fa-trash" aria-hidden="true"></i></a> 
+                  <a href="{{route('category.edit',['id' => $cat->id])}}"><i style="color: #c49f47;" class="fas fa-pen-square"></i></a> |
+                  <a href="{{route('category.delete' , ['id' => $cat->id])}}"><i style="color: #bd0a0a;" class="fa fa-trash" aria-hidden="true"></i></a> 
 
                     </td>
                     </tr>
